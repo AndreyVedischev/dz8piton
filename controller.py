@@ -28,11 +28,11 @@ def add_user_controller(data=None, cls=True):
     return 20, user 
 
 
-# def del_user_controller(data=None, cls=True):
-#     render_template(context={}, template="add_user.jinja2", cls=cls)
-#     username = input()
-#     user = User.delete(username)
-#     return 'main', None 
+def del_user_controller(data=None, cls=True):
+    render_template(context={}, template="add_user.jinja2", cls=cls)
+    username = input()
+    user = User.del_user(username)
+    return 'main', None 
 
 def add_info_controller(user, cls=True):
     render_template(context={}, template="add_info.jinja2", cls=cls)
@@ -62,6 +62,7 @@ controllers_dict = {
     '0': exit_controller,
     '1': all_users_controller,
     '2': add_user_controller,
+    '4': del_user_controller,
     20: add_info_controller,
     21: add_phone_controller, 
     212: add_more_controller

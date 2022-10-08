@@ -27,10 +27,19 @@ class User(Base):
         session.add(user)
         session.commit()
         return user
-    
+
+
+    @classmethod
+    def del_user(cls):
+        i = session.query(cls).one()
+        session.delete(i)
+        session.commit()
+
+
     @classmethod
     def all(cls): 
         return session.query(cls).all()
+
 
 class Info(Base):
     __tablename__ = 'info'
