@@ -1,7 +1,6 @@
 from controller import get_controller
-def main():
-    # main (starting) point
-    state = (None, None) # starting with no state
+def main():    
+    state = (None, None)
     while True:
         controller = get_controller(state[0])
         state = controller(state[1])

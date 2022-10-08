@@ -1,3 +1,4 @@
+from distutils.log import info
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
@@ -15,6 +16,7 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     phones = relationship("Phone", back_populates="user")
+    info = relationship("Info", back_populates="user")
 
     def __str__(self):
         return self.name
@@ -30,6 +32,22 @@ class User(Base):
     def all(cls): 
         return session.query(cls).all()
 
+class Info(Base):
+    __tablename__ = 'info'
+    id = Column(Integer, primary_key=True)
+    info = Column(String)
+    user_id = Column(Integer, ForeignKey('users.id'))
+    user = relationship("User", back_populates="info")
+
+    def __str__(self):
+        return self.info
+
+    @classmethod
+    def add(cls, info, user): 
+        info = cls(info=info,user=user )
+        session.add(info)
+        session.commit()
+        return info
 
 class Phone(Base):
     __tablename__ = 'phones'
