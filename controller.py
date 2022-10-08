@@ -28,11 +28,11 @@ def add_user_controller(data=None, cls=True):
     return 20, user 
 
 
-# def add_user_controller(data=None, cls=True):
+# def del_user_controller(data=None, cls=True):
 #     render_template(context={}, template="add_user.jinja2", cls=cls)
 #     username = input()
-#     user = User.add(username)
-#     return 21, user 
+#     user = User.delete(username)
+#     return 'main', None 
 
 def add_info_controller(user, cls=True):
     render_template(context={}, template="add_info.jinja2", cls=cls)
